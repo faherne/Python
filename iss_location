@@ -1,0 +1,4 @@
+The current location of the ISS is:
+{'timestamp': 1617123713, 'iss_position': {'longitude': '27.7453', 'latitude': '51.1309'}, 'message': 'success'}
+The current location of the ISS is:
+{'timestamp': 1617123790, 'iss_position': {'longitude': '35.1872', 'latitude': '50.1346'}, 'message': 'success'}
