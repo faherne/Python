@@ -7,6 +7,7 @@ https://fantasy.premierleague.com/api/bootstrap-static/
 
 import requests
 from openpyxl import Workbook
+import time
 
 API = 'https://fantasy.premierleague.com/api/bootstrap-static/'
 
@@ -50,8 +51,10 @@ def main():
                 wbrow = (webname, gameminutes, goalsscored, assists, indreamteam, pointspergame)
                 wbsheet.append(wbrow)
 
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    print("\nTime Stamp is: " + timestr + "\n")
     #Finally, save the file and give it a name
-    wb.save('/home/student/mycode/challenge-api/FF_Dream_Team_Stats.xlsx')
+    wb.save("/home/student/mycode/challenge-api/FF_Dream_Team_Stats__" + timestr + ".xlsx")
 
 if __name__ == "__main__":
     main()
