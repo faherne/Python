@@ -41,19 +41,26 @@ def main():
         indreamteam = playername.get("in_dreamteam")
         pointspergame = playername.get("points_per_game")
         
+        # Is player in the league's dream team?
         if indreamteam:
             print(" Name: " + webname + ", In Dream Team: " + str(indreamteam))
             print(" Goals scored: " + str(goalsscored) + ", Assists: " + str(assists))
             print(" Minutes: " + str(gameminutes) + ", Points per Game: " + pointspergame + "\n")
             
-            #Loop to set the value of each cell
-            for i in range(11):
-                wbrow = (webname, gameminutes, goalsscored, assists, indreamteam, pointspergame)
-                wbsheet.append(wbrow)
+            # Append row to sheet
+            wbrow = (webname, gameminutes, goalsscored, assists, indreamteam, pointspergame)
+            wbsheet.append(wbrow)
 
+    # Calculate timestamp for file naming
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    print("\nTime Stamp is: " + timestr + "\n")
-    #Finally, save the file and give it a name
+    
+    # Add filter
+    wbsheet.auto_filter.ref = wbsheet.dimensions
+    
+    # Freeze header row
+    wbsheet.freeze_panes = "A2"
+    
+    # Finally, save the file and give it a name
     wb.save("/home/student/mycode/challenge-api/FF_Dream_Team_Stats__" + timestr + ".xlsx")
 
 if __name__ == "__main__":
